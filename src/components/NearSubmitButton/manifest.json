@@ -1,0 +1,144 @@
+{
+  "displayName": "nearSubmitButton",
+  "defaultWidth": 554,
+  "defaultHeight": 128,
+  "components": "./index.js",
+  "icon": "./example-thumbnail.png",
+  "props": [
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "text",
+      "default": "Submit",
+      "styles": {
+        "fontFamily": "@body",
+        "color": "@contrast:backgroundColor",
+        "fontWeight": "normal",
+        "borderRadius": "18px"
+      }
+    },
+    {
+      "name": "backgroundColor",
+      "displayName": "Background Color",
+      "type": "color",
+      "default": "@primary"
+    },
+    {
+      "name": "contractName",
+      "displayName": "Contract Name",
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "contractMethod",
+      "displayName": "Contract Method",
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "isChange",
+      "displayName": "Change Method",
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "name": "parametr1Name",
+      "displayName": "parametr1Name",
+      "type": "text"
+    },
+    {
+      "name": "parametr1Value",
+      "displayName": "parametr1Value",
+      "type": "text"
+    },
+    {
+      "name": "parametr2Name",
+      "displayName": "parametr2Name",
+      "type": "text"
+    },
+    {
+      "name": "parametr2Value",
+      "displayName": "parametr2Value",
+      "type": "text"
+    },
+    {
+      "name": "parametr3Name",
+      "displayName": "parametr3Name",
+      "type": "text"
+    },
+    {
+      "name": "parametr3Value",
+      "displayName": "parametr3Value",
+      "type": "text"
+    },
+    {
+      "name": "parametr4Name",
+      "displayName": "parametr4Name",
+      "type": "text"
+    },
+    {
+      "name": "parametr4Value",
+      "displayName": "parametr4Value",
+      "type": "text"
+    },
+    {
+      "name": "parametr5Name",
+      "displayName": "Number Parametr 4 Name",
+      "type": "text"
+    },
+    {
+      "name": "parametr5Value",
+      "displayName": "Number Parametr 4 Value (u64)",
+      "type": "number"
+    },
+    {
+      "name": "netType",
+      "displayName": "Net Type",
+      "type": "text",
+      "default": "testnet",
+      "control": {
+        "type": "menu",
+        "options": [
+          {
+            "label": "TestNet",
+            "value": "testnet"
+          },
+          {
+            "label": "MainNet",
+            "value": "mainnet"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hashValue",
+      "displayName": "Hash",
+      "type": "text",
+      "role": "formValue"
+    },
+    {
+      "name": "successAction",
+      "type": "action",
+      "displayName": "Success action"
+    },
+    {
+      "name": "onSub",
+      "displayName": "Trigger when the submit on",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "boolean",
+          "displayName": "Success status"
+        },
+        {
+          "type": "number",
+          "displayName": "gas"
+        },
+        {
+          "type": "text",
+          "displayName": "Errors, logs"
+        }
+      ]
+    }
+  ]
+}

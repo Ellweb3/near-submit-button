@@ -5,7 +5,6 @@ import { useEffect, useState, useContext } from 'react'
 import Swal from 'sweetalert2'
 import * as nearAPI from 'near-api-js';
 const { providers, utils, keyStores, KeyPair } = nearAPI
-
 import { Button, Text, View, StyleSheet } from 'react-native'
 
 
@@ -20,7 +19,7 @@ console.log(props, "subProps");
 	// console.log('props', props);
 	
 	useEffect(() => {
-		
+	
 		const transactionStatus = async (transactionHashes) => {
 			let promise = new Promise((resolve, reject) => {
 				setTimeout(() => resolve("get global"), 500)

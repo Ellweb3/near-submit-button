@@ -1,7 +1,7 @@
 {
   "name": "near-submit-button",
   "description": "Button",
-  "version": "1.0.44",
+  "version": "1.0.58",
   "main": "index.js",
   "license": "ISC",
   "author": "Ell",
@@ -32,13 +32,11 @@
     "react-native-web": "^0.9.5"
   },
   "dependencies": {
-    "@pacote/u64": "^0.1.6",
     "@protonapp/react-native-material-ui": "^2.0.6",
     "@react-native-async-storage/async-storage": "^1.15.15",
     "bs58": "^4.0.1",
     "chroma-js": "^2.1.2",
     "color": "^3.1.0",
-    "int64-buffer": "^1.0.1",
     "near-api-js": "^0.44.2",
     "react-indiana-drag-scroll": "^1.7.0",
     "react-native-paper": "^4.7.2",

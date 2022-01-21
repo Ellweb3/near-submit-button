@@ -83,12 +83,12 @@
     },
     {
       "name": "parametr5Name",
-      "displayName": "Number Parametr 4 Name",
+      "displayName": "Number Parametr 5 Name",
       "type": "text"
     },
     {
       "name": "parametr5Value",
-      "displayName": "Number Parametr 4 Value (u64)",
+      "displayName": "Number Parametr 5 Value",
       "type": "number"
     },
     {

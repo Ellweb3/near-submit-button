@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/17.2.0/bin/node /usr/local/bin/yarn add @pacote
+  /usr/local/Cellar/node/17.2.0/bin/node /usr/local/bin/yarn add BN
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,8 +14,8 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@pacote: Request "https://registry.yarnpkg.com/@pacote" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67038:18)
+  Error: https://registry.yarnpkg.com/BN: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (node:events:390:28)
       at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
@@ -30,7 +30,7 @@ npm manifest:
   {
     "name": "near-submit-button",
     "description": "Button",
-    "version": "1.0.36",
+    "version": "1.0.65",
     "main": "index.js",
     "license": "ISC",
     "author": "Ell",

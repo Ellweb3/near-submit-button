@@ -1,18 +1,20 @@
 import React from 'react'
 import 'regenerator-runtime/runtime';
 import bs58 from 'bs58'
-import { useEffect, useState } from 'react'
+import BN from 'bn.js'
+import { useEffect } from 'react'
 import * as nearAPI from 'near-api-js';
 const { providers, utils } = nearAPI
-import { Button, Text, View, StyleSheet } from 'react-native'
+import { Button,View, StyleSheet } from 'react-native'
 
 const NearSubmitButton = (props) => {
 	const { onSub, successAction } = props
 	const currentUrl = new URL(window.location.href)
 	const transactionHashes = currentUrl.searchParams.get('transactionHashes') || ''
+	const GAS = new BN('200000000000000')
+	const attachedDeposit = utils.format.parseNearAmount(`${props?.deposit}`)
 
 	useEffect(() => {
-
 		const transactionStatus = async (transactionHashes) => {
 			let promise = new Promise((resolve, reject) => {
 				setTimeout(() => resolve("get global object"), 500)
@@ -31,24 +33,29 @@ const NearSubmitButton = (props) => {
 		}
 
 		async function getTransaction(transactionHashes) {
-			await transactionStatus(transactionHashes).then((res) => {
-				onSub(res.result, res.nearBurnt, res.transactionHashes)
-				props.hashValue.onChange(res.transactionHashes)
-				successAction()
+			 await transactionStatus(transactionHashes).then(async (res) => {
+				if (res.result) {
+					await onSub(res.result, res.nearBurnt, res.transactionHashes)
+					await props.hashValue.onChange(res.transactionHashes)
+					successAction()
+				} else {
+					await onSub(res.result, res.nearBurnt, res.transactionHashes)
+					await props.hashValue.onChange(res.transactionHashes)
+					props.errorAction()
+				}
 			})
-
 		}
 
 		if (transactionHashes) {
-			console.log('has hash',transactionHashes);
 			getTransaction(transactionHashes)
 		}
 	}, [transactionHashes])
 
 	const sendContract = async () => {
-		function makeParametrsObject() {
+		
+		const contractArguments = ()=> {
 			const argObj = {}
-			for (let i = 1; i < 6; i++) {
+			for (let i = 1; i < 5; i++) {
 				if ((props[`parametr${i}Name`]) && (props[`parametr${i}Value`])) {
 					let argObjName = props[`parametr${i}Name`]
 					argObj[argObjName] = props[`parametr${i}Value`]
@@ -57,30 +64,16 @@ const NearSubmitButton = (props) => {
 			console.log(argObj);
 			return argObj
 		}
-		try {
+		console.log(contractArguments());
 
-			let isSuccess = await global.nearConnect.contract[props.contractMethod](makeParametrsObject());
-				if (isSuccess) {
-					console.log("Success");
-				} 
-			// else {
-			// 		console.log(false,0,e).then((result) => {
-			// 			if (result.isConfirmed) {
-			// 				// location.reload();
-			// 			}
-			// 		});
-			// 	}
-		} catch (e) {
-			console.log(false, 0, e).then((result) => {
-				if (result.isConfirmed) {
-					// location.reload();
-				}
-			});
-			throw e
-		} finally {
-			// location.reload();
-		}
-
+		await global.nearConnect.walletConnection.account().functionCall({
+					contractId: await global.nearConnect.contract.contractId,
+					methodName: props.contractMethod,
+					// args: {receiver:"nfts.testnet", tokenId:props.parametr2Value},
+					args: contractArguments(),
+					attachedDeposit: attachedDeposit ? attachedDeposit : '',
+					gas: GAS
+		})
 	}
 
 	return (

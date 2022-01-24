@@ -82,14 +82,9 @@
       "type": "text"
     },
     {
-      "name": "parametr5Name",
-      "displayName": "Number Parametr 5 Name",
+      "name": "deposit",
+      "displayName": "Attached deposit",
       "type": "text"
-    },
-    {
-      "name": "parametr5Value",
-      "displayName": "Number Parametr 5 Value",
-      "type": "number"
     },
     {
       "name": "netType",
@@ -120,6 +115,11 @@
       "name": "successAction",
       "type": "action",
       "displayName": "Success action"
+    },
+    {
+      "name": "errorAction",
+      "type": "action",
+      "displayName": "Error action"
     },
     {
       "name": "onSub",

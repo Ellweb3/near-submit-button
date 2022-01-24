@@ -1,7 +1,7 @@
 {
   "name": "near-submit-button",
   "description": "Button",
-  "version": "1.0.58",
+  "version": "1.0.69",
   "main": "index.js",
   "license": "ISC",
   "author": "Ell",
@@ -34,6 +34,7 @@
   "dependencies": {
     "@protonapp/react-native-material-ui": "^2.0.6",
     "@react-native-async-storage/async-storage": "^1.15.15",
+    "bn.js": "^5.2.0",
     "bs58": "^4.0.1",
     "chroma-js": "^2.1.2",
     "color": "^3.1.0",

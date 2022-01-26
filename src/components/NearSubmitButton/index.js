@@ -69,7 +69,6 @@ const NearSubmitButton = (props) => {
 		await global.nearConnect.walletConnection.account().functionCall({
 					contractId: await global.nearConnect.contract.contractId,
 					methodName: props.contractMethod,
-					// args: {receiver:"nfts.testnet", tokenId:props.parametr2Value},
 					args: contractArguments(),
 					attachedDeposit: attachedDeposit ? attachedDeposit : '',
 					gas: GAS

@@ -6,40 +6,46 @@ const ViewMethod = (props) => {
 	const { title, viewMethodName, collection, backgroundColor, onView } = props
 
 	async function viewFunc() {
-		const viewFunctionCollection = await global.nearConnect.contract[viewMethodName](makeParametrsObject())
+
+		 const viewFunctionCollection =  await global.nearConnect.walletConnection.account().functionCall({
+			contractId: await global.nearConnect.contract.contractId,
+			methodName: viewMethodName,
+			args: contractArguments(),
+}) 
+
 		compareCollection(viewFunctionCollection, collection)
 
-		function makeParametrsObject() {
+		const contractArguments = ()=> {
 			const argObj = {}
-			for (let i = 1; i < 4; i++) {
+			for (let i = 1; i < 5; i++) {
 				if ((props[`parametr${i}Name`]) && (props[`parametr${i}Value`])) {
 					let argObjName = props[`parametr${i}Name`]
 					argObj[argObjName] = props[`parametr${i}Value`]
 				}
 			}
-			// console.log(argObj);
+			console.log(argObj);
 			return argObj
 		}
 		function compareCollection(contractCollection, userCollection) {
-			const addCollection = []
+			const foundItems = []
 			for (let j = 0; j < contractCollection.length; j++) {
-				let findResult = false
+				let isFound = false
 				for (let i = 0; i < userCollection.length; i++) {
 					let contractItemNumber = Number(contractCollection[j].id)
 					let collectionItemNumber = Number(userCollection[i].compareId)
 					if (contractItemNumber === collectionItemNumber) {
-						findResult = true
+						isFound = true
 					}
 				}
-				if (!findResult) {
+				if (!isFound) {
 					// console.log("item", contractCollection[j]);
-					addCollection.push(contractCollection[j])
+					foundItems.push(contractCollection[j])
 				}
 			}
-			if (addCollection) {
-				addCollection.map((item) => {
+			if (foundItems && onView) {
+				foundItems.map((item) => {
 					onView(item.id, item.metadata.title, item.metadata.media)
-					// console.log(item.id, item.metadata.title, item.metadata.media);
+					// it can be set to add new parametrs in manifest
 				})
 			}
 		}

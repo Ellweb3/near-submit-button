@@ -13,7 +13,7 @@ Now it will become easier to create web3 applications.
   - set your own name, author and version of Component in package.json
   - install dependencies
     - `yarn`
-  - login to Adalo cli
+  - login to Adalo [Adalo dev instruction](https://developers.adalo.com/docs/basics/introduction)
     - `npx adalo login`
   - run dev or prod mod
     - `npx adalo dev` or `npx adalo publish`

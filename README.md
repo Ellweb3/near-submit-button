@@ -10,7 +10,7 @@ Now it will become easier to create web3 applications.
 
 1. Code instructions
   - clone repo
-  - set your own name and version of Component in package.json
+  - set your own name, author and version of Component in package.json
   - install dependencies
     - `yarn`
   - login to Adalo cli

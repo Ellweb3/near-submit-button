@@ -38,6 +38,7 @@ const NearSubmitButton = (props) => {
 					await onSub(res.result, res.nearBurnt, res.transactionHashes)
 					await props.hashValue.onChange(res.transactionHashes)
 					successAction()
+					window.history.pushState(null, null, window.location.pathname);
 				} else {
 					await onSub(res.result, res.nearBurnt, res.transactionHashes)
 					await props.hashValue.onChange(res.transactionHashes)
@@ -66,13 +67,17 @@ const NearSubmitButton = (props) => {
 		}
 		console.log(contractArguments());
 
-		await global.nearConnect.walletConnection.account().functionCall({
-					contractId: await global.nearConnect.contract.contractId,
-					methodName: props.contractMethod,
-					args: contractArguments(),
-					attachedDeposit: attachedDeposit ? attachedDeposit : '',
-					gas: GAS
-		})
+		const callObject = {		
+				contractId: await global.nearConnect.contract.contractId,
+				methodName: props.contractMethod,
+				args: contractArguments(),
+				gas: GAS
+		}
+		if (attachedDeposit) {
+			callObject.attachedDeposit = attachedDeposit
+		}
+
+		await global.nearConnect.walletConnection.account().functionCall(callObject)
 	}
 
 	return (

@@ -1,7 +1,7 @@
 {
   "name": "near-submit-button",
-  "description": "Button",
-  "version": "1.1.0",
+  "description": "Change function call button for Near Protocol",
+  "version": "1.2.0",
   "main": "index.js",
   "license": "ISC",
   "author": "Ell",
@@ -17,10 +17,6 @@
       {
         "name": "NearSubmitButton",
         "manifest": "./src/components/NearSubmitButton/manifest.json"
-      },
-      {
-        "name": "ViewMethod",
-        "manifest": "./src/components/ViewMethod/manifest.json"
       }
     ]
   },

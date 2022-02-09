@@ -1,7 +1,7 @@
 {
   "name": "near-submit-button",
   "description": "Change function call button for Near Protocol",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "index.js",
   "license": "ISC",
   "author": "Ell",

@@ -17,7 +17,7 @@ const NearSubmitButton = (props) => {
 	useEffect(() => {
 		const transactionStatus = async (transactionHashes) => {
 			let promise = new Promise((resolve, reject) => {
-				setTimeout(() => resolve("get global object"), 500)
+				setTimeout(() => resolve("get global object"), 1000)
 			});
 			let resultPromise = await promise;
 			if (resultPromise) {
